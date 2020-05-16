@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 
 class Persons extends Component {    
 
-    personAddedHandler = () => {
+    personAddedHandler = (name, age) => {
         const newPerson = {
             id: Math.random(), // not really unique but good enough here!
-            name: 'Djorkaeff',
-            age: Math.floor( Math.random() * 40 )
+            name:name,
+            age: age
         }
         this.props.addPerson(newPerson);
     }
@@ -23,7 +23,7 @@ class Persons extends Component {
 
         return (
             <div>
-                <AddPerson personAdded={this.personAddedHandler} />
+                <AddPerson personAdded={(name, age) => this.personAddedHandler(name, age)} />
                 {this.props.persons.map(person => (
                     <Person 
                         key={person.id}
