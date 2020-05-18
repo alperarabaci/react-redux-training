@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import thunk from 'redux-thunk';
+
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import counterReducer from './store/reducers/counter';
@@ -41,7 +43,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  * burada birden fazla middleware olusturulabiliyormuş 
  * applyMiddleware(logger, logger2, vs..)
  */
-const store2 = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+const store2 = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 /**
  * witout redux devtools extension
